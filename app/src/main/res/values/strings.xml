@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Donut n\' Coffee</string>
+
+    <string name = "username">username here</string>
+    <string name = "password">password here</string>
+    <string name = "age">your age</string>
+    <string name = "sign_in">sign in</string>
+</resources>
