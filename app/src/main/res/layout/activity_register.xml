@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Register"
             android:textSize="32sp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:layout_marginBottom="30dp"
             android:textColor="#ffffff"
 
