@@ -1,7 +1,9 @@
 package com.example.donutncoffee
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -35,9 +37,9 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         //vendo se o email é valido
-        else if(!Patterns.EMAIL_ADDRESS.matcher(emailEdtTxt_Register.toString()).matches())
+       else if(Patterns.EMAIL_ADDRESS.matcher(emailEdtTxt_Register.toString()).matches())
         {
-            emailEdtTxt_Register.error = "invalid email"
+           emailEdtTxt_Register.error = "invalid email"
             emailEdtTxt_Register.requestFocus()
             return
         }
@@ -57,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                 task ->
                 if(task.isSuccessful)
             {
-                //volta pra a tela de login
+                startActivity(Intent(this, MainActivity::class.java))
                 Toast.makeText(this,"sign up sucessful",Toast.LENGTH_SHORT).show()
             }
                 else

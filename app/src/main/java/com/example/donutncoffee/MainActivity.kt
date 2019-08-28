@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         {
             startActivity(Intent((this),DashboardActivity::class.java))
             Toast.makeText(this,"sign in sucessful",Toast.LENGTH_SHORT).show()
+            finish()
         }
         else
         {
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //vendo se o email é valido
-        else if(!Patterns.EMAIL_ADDRESS.matcher(emailEdtTxt.toString()).matches())
+        else if(Patterns.EMAIL_ADDRESS.matcher(emailEdtTxt.toString()).matches())
         {
             emailEdtTxt_Register.error = "invalid email"
             emailEdtTxt_Register.requestFocus()
