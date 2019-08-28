@@ -1,11 +1,16 @@
 package com.example.donutncoffee
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,42 +23,75 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
 
-        //Componentes
-        val finishBtn = findViewById<Button>(R.id.finishBtn)
-        val usernameEdtTxt = findViewById<EditText>(R.id.usernameEdtTxt)
-        val passwordEdtTxt = findViewById<EditText>(R.id.passwordEdtTxt)
-
-        //Usuario que deu
-        var inputUsername:String = ""
-        var inputAge:Int = 0
-        var inputPassword:String = ""
-
-        fun txtToInput()
+        registerBtn.setOnClickListener()
         {
-            inputUsername = usernameEdtTxt.text.toString()
-            inputPassword =passwordEdtTxt.text.toString()
+            startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
 
-        finishBtn.setOnClickListener()
+        loginBtn.setOnClickListener()
         {
-            txtToInput()
-            if (inputUsername == "" || inputPassword == "")
-            {
-                Toast.makeText(this,"por favor, preencha tudo",Toast.LENGTH_LONG).show()
-            }
+            userLogin()
+        }
+    }
 
-            else
+    fun updateUI(currentUser : FirebaseUser?)
+    {
+        if(currentUser != null)
+        {
+            startActivity(Intent((this),DashboardActivity::class.java))
+            Toast.makeText(this,"sign in sucessful",Toast.LENGTH_SHORT).show()
+        }
+        else
+        {
+            Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun userLogin()
+    {
+        //vendo se escreveu o email
+        if(emailEdtTxt.text.toString().isEmpty())
+        {
+            emailEdtTxt_Register.error = "missing email"
+            emailEdtTxt_Register.requestFocus()
+            return
+        }
+
+        //vendo se o email é valido
+        else if(!Patterns.EMAIL_ADDRESS.matcher(emailEdtTxt.toString()).matches())
+        {
+            emailEdtTxt_Register.error = "invalid email"
+            emailEdtTxt_Register.requestFocus()
+            return
+        }
+
+        //vendo se nao falta a senha tbm
+        else if(passwordEdtTxt.text.toString().isEmpty())
+        {
+            passwordEdtTxt_Register.error = "missing password"
+            passwordEdtTxt_Register.requestFocus()
+            return
+        }
+
+        else
+        {
+            auth.signInWithEmailAndPassword(emailEdtTxt_Register.text.toString(), passwordEdtTxt_Register.text.toString()).addOnCompleteListener(this)
             {
-                if(inputAge < 18)
+                    task ->
+                if(task.isSuccessful)
                 {
-                    Toast.makeText(this,"você é jovem demais",Toast.LENGTH_LONG).show()
+                    val user = auth.currentUser
+                    updateUI(user);
                 }
-
                 else
                 {
-                    Toast.makeText(this,"você está numa boa epoca da sua vida",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"sign in failed. try again later",Toast.LENGTH_SHORT).show()
                 }
+
             }
+
+
         }
     }
 }

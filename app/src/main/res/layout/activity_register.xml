@@ -10,13 +10,13 @@
         android:orientation="vertical"
         android:gravity="top|center"
         android:background="#FFC0CB"
-        tools:context=".MainActivity">
+        tools:context=".RegisterActivity">
 
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="Register"
             android:textSize="32sp"
             android:layout_marginTop="150dp"
             android:layout_marginBottom="30dp"
@@ -25,7 +25,7 @@
     />
 
     <EditText
-            android:id = "@+id/emailEdtTxt"
+            android:id = "@+id/emailEdtTxt_Register"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
 
 
     <EditText
-            android:id="@+id/passwordEdtTxt"
+            android:id="@+id/passwordEdtTxt_Register"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,31 +48,18 @@
             android:singleLine="false"
             android:textColorHint="#ffffff"/>
 
+
     <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/doneBtn"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="100dp"
-            android:text="@string/signIn_btn"
+            android:text="@string/finishedRegister_btn"
             android:textColor="#ffffff"
             android:background="#F6CED5"
 
     />
-
-    <Button
-            android:id="@+id/registerBtn"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/signUp_btn"
-            android:textColor="#ffffff"
-            android:background="#F6CED5"
-
-    />
-
 
 </LinearLayout>
