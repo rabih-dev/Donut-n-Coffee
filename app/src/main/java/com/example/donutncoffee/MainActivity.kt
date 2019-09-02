@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         registerBtn.setOnClickListener()
         {
             startActivity(Intent(this, RegisterActivity::class.java))
-            finish()
+
         }
 
         loginBtn.setOnClickListener()
