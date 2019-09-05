@@ -14,17 +14,31 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private lateinit var auth: FirebaseAuth
+    lateinit var progressBar : Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
+        progressBar = Dialog(this,android.R.style.Theme_Translucent_NoTitleBar)
+
+        val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
+        progressBar.setContentView(view)
+
 
         doneBtn.setOnClickListener()
         {
             signUpUser()
         }
+    }
+
+    fun ShowProgressBar()
+    {
+
+        progressBar.setCancelable(false)
+        progressBar.show()
+
     }
 
     fun signUpUser()
@@ -55,33 +69,25 @@ class RegisterActivity : AppCompatActivity() {
 
         else
         {
+            ShowProgressBar()
             auth.createUserWithEmailAndPassword(emailEdtTxt_Register.text.toString(), passwordEdtTxt_Register.text.toString()).addOnCompleteListener(this)
             {
                 task ->
                 if(task.isSuccessful)
             {
+                progressBar.dismiss()
                 startActivity(Intent(this, MainActivity::class.java))
                 Toast.makeText(this,"sign up sucessful",Toast.LENGTH_SHORT).show()
                 finish()
             }
                 else
                 {
+                    progressBar.dismiss()
                     Toast.makeText(this,"sign up failed. try again later",Toast.LENGTH_SHORT).show()
                 }
 
             }
         }
-
-        fun progressBarDialog()
-        {
-            val dialog = Dialog(this,android.R.style.Theme_Translucent_NoTitleBar)
-            val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
-            dialog.setContentView(view)
-            dialog.setCancelable(false)
-            dialog.show()
-        }
-
-
 
     }
 
