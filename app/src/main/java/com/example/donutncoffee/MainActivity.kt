@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         {
             startActivity(Intent((this),DashboardActivity::class.java))
             Toast.makeText(this,"sign in sucessful",Toast.LENGTH_SHORT).show()
-            finish()
+//            finish()
         }
         else
         {
@@ -77,13 +77,13 @@ class MainActivity : AppCompatActivity() {
 
         else
         {
-            auth.signInWithEmailAndPassword(emailEdtTxt_Register.text.toString(), passwordEdtTxt_Register.text.toString()).addOnCompleteListener(this)
+            auth.signInWithEmailAndPassword(emailEdtTxt.text.toString(), passwordEdtTxt.text.toString()).addOnCompleteListener(this)
             {
                     task ->
                 if(task.isSuccessful)
                 {
                     val user = auth.currentUser
-                    updateUI(user);
+                    updateUI(user)
                 }
                 else
                 {

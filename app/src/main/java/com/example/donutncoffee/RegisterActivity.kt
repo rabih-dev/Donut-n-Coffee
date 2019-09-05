@@ -1,5 +1,6 @@
 package com.example.donutncoffee
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -69,9 +70,18 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
             }
-
-            
         }
+
+        fun progressBarDialog()
+        {
+            val dialog = Dialog(this,android.R.style.Theme_Translucent_NoTitleBar)
+            val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
+            dialog.setContentView(view)
+            dialog.setCancelable(false)
+            dialog.show()
+        }
+
+
 
     }
 
