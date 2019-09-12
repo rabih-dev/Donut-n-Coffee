@@ -1,5 +1,6 @@
 package com.example.donutncoffee
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    lateinit var progressBar : Dialog
 
     //Login Script
 
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
+
+        val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
+        progressBar.setContentView(view)
 
         registerBtn.setOnClickListener()
         {
@@ -33,6 +38,14 @@ class MainActivity : AppCompatActivity() {
         {
             userLogin()
         }
+    }
+
+    fun ShowProgressBar()
+    {
+
+        progressBar.setCancelable(false)
+        progressBar.show()
+
     }
 
     fun updateUI(currentUser : FirebaseUser?)
@@ -77,16 +90,19 @@ class MainActivity : AppCompatActivity() {
 
         else
         {
+            ShowProgressBar()
             auth.signInWithEmailAndPassword(emailEdtTxt.text.toString(), passwordEdtTxt.text.toString()).addOnCompleteListener(this)
             {
                     task ->
                 if(task.isSuccessful)
                 {
+                    progressBar.dismiss()
                     val user = auth.currentUser
                     updateUI(user)
                 }
                 else
                 {
+                    progressBar.dismiss()
                     Toast.makeText(this,"sign in failed. try again later",Toast.LENGTH_SHORT).show()
                 }
 
