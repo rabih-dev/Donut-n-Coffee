@@ -25,15 +25,25 @@
     />
 
     <EditText
+            android:id = "@+id/nameEdtTxt_Register"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nameHere_TxtHint"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="#ffffff"/>
+    />
+
+    <EditText
             android:id = "@+id/emailEdtTxt_Register"
             android:textSize="18sp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/emailHere_txtHint"
-            android:layout_margin="20dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
             android:textColorHint="#ffffff"/>
-
     />
 
 
@@ -41,13 +51,22 @@
     <EditText
             android:id="@+id/passwordEdtTxt_Register"
             android:textSize="18sp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordHere_txtHint"
             android:inputType="textPassword"
             android:singleLine="false"
-            android:textColorHint="#ffffff"/>
+            android:textColorHint="#ffffff"
+            android:layout_marginBottom="16dp"/>
 
+
+    <Spinner
+
+            android:id="@+id/jobSpinner_Register"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+
+    />
 
     <Button
             android:id="@+id/doneBtn"
@@ -59,7 +78,10 @@
             android:text="@string/finishedRegister_btn"
             android:textColor="#ffffff"
             android:background="#F6CED5"
-
     />
+
+
+
+
 
 </LinearLayout>

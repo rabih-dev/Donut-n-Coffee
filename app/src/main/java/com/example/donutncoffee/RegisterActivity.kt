@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
@@ -20,13 +21,19 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        //Firebase && ProgressBar
         auth = FirebaseAuth.getInstance()
         progressBar = Dialog(this,android.R.style.Theme_Translucent_NoTitleBar)
 
         val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
         progressBar.setContentView(view)
 
-
+        //Spinner
+        val adapter = ArrayAdapter.createFromResource(this, R.array.spinners_jobs,android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        jobSpinner_Register.adapter = adapter
+        
+        //Buttons
         doneBtn.setOnClickListener()
         {
             signUpUser()

@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">Donut n\' Coffee</string>
 
-    <string name="emailHere_txtHint">email here</string>
-    <string name="passwordHere_txtHint">password here</string>
+    <string name="emailHere_txtHint">Email</string>
+    <string name="passwordHere_txtHint">Password</string>
 
-    <string name="signIn_btn">sign in</string>
-    <string name="signUp_btn">sign up</string>
+    <string name="signIn_btn">Sign In</string>
+    <string name="signUp_btn">Sign Up</string>
 
-    <string name="finishedRegister_btn">i\'m done</string>
+    <string name="finishedRegister_btn">Sign in</string>
+    <string name="nameHere_TxtHint">Name</string>
+
+    <string-array name="spinners_jobs">
+        <item>Programmer</item>
+        <item>Designer</item>
+        <item>Artist</item>
+    </string-array>
+
 </resources>
