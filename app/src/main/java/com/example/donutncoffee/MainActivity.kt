@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
+        progressBar = Dialog(this,android.R.style.Theme_Translucent_NoTitleBar)
 
         val view = this.layoutInflater.inflate(R.layout.fullscreen_progressbar,null)
         progressBar.setContentView(view)

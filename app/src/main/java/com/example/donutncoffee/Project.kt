@@ -1,4 +1,4 @@
 package com.example.donutncoffee
 
-data class Project(val name:String, val description:String, val remunerated:Boolean){
+data class Project(val projectName:String, val projectDesc:String, val remunerated:Boolean,val projectImg : Int){
 }

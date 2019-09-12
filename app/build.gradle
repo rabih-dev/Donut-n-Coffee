@@ -24,9 +24,11 @@ android {
     }
 }
 
+
+
 dependencies {
 
-    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4" // library do card stack view
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -36,4 +38,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
