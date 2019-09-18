@@ -28,6 +28,9 @@ android {
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-firestore:20.2.0'
+    apply plugin: 'com.google.gms.google-services'// Google Play services Gradle plugin
+
     implementation "com.yuyakaido.android:card-stack-view:2.3.4" // library do card stack view
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

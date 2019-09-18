@@ -10,15 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.project_card.view.*
 
 
-class CardStackAdapter(private var projectsList: List<Project> = emptyList()) : RecyclerView.Adapter<CardStackAdapter.ViewHolder>() {
+class CardStackAdapter(private var projectsList: List<Project>): RecyclerView.Adapter<CardStackAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.fullscreen_progressbar, parent, false))
+        return ViewHolder(inflater.inflate(R.layout.project_card, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val project = projectsList[position]
+        var project = projectsList[position]
         holder.projectName.text = project.projectName
         holder.projectDesc.text = project.projectDesc
         holder.projectImage.setImageResource(project.projectImg)
